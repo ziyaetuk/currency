@@ -1,2 +1,2 @@
 # currency
-Currency Converter
+Simple Currency Converter
