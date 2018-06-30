@@ -2,28 +2,97 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Currency Converter...</title>
-<script src="js/app.js"></script>
-<link rel="stylsheet" href="css/app.css">
+<title>Currency Converter : Currency convertions made easy</title>
+
+<link rel="stylsheet" href="css/style.css">
 <link rel="stylsheet" href="css/normalize.min.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,300,800,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+ 
 </head>
 
 <body>
-Under Construction
+  <div class="jumbotron text-center headerBG">
+    <h1>Currency Converter</h1>
+    <p>Currency convertion made easy</p> 
+  </div>
+  
+  <main role="main">
+  
+  
+  
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+  
+    <div class="container-fluid">
+      <div class="card">
+        <div class="row">
+          <div class="col-md-12 d-flex justify-content-center">
+              <div class="card-feel">
+                  <h1 class="lead text-center"></h1><br>
+                  <form method="post" onsubmit="return convertCurrency()">
+        
+                      <div class="form-group">
+                          <input  min="1" id="convert-amount" value="" class="form-control" placeholder="Amount">
+                      
+          </div>
+                      <br />
+        
+                      <div class="form-group">
+                          <select class="form-control" id="fromCurrency"><option>From</option>
+            </select>
+            
+                      </div>
+                      <br />
+        
+                      <div class="form-group">
+          <select class="form-control" id="toCurrency"><option>To</option></select>
+                      
+          </div>
+                      <br />
+
+                      <div class="form-group text-center">
+          
+                          <label for="convert-btn"></label>
+                          <button class="btn btn-primary btn-lg btn-block" id="convertBotten">Convert</button>
+                      </div>
+                      <br />
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- notification section -->
+  <!-- alert notification -->
+  <div class="notify"></div>
+
+      </div>
+    </div>
+    <!-- /.container -->
+  
+  
+    <!-- FOOTER -->
+    <footer class="container">
+      <p class="float-right">
+        <a href="#">Back to top</a>
+      </p>
+      <p>&copy; 2018 Ziya, Fintech. &middot;
+        <a href="#">Privacy</a> &middot;
+        <a href="#">Terms</a>
+      </p>
+    </footer>
+  
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+  <script src="js/app.js"></script>
+  
 </body>
- <!-- Register Service Worker -->
- <script>
-    if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('js/sw.js').then(function(registration) {
-      // Registration was successful
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, function(err) {
-      // registration failed :(
-      console.log('ServiceWorker registration failed: ', err);
-    });
-  });
-}
-  </script>
 
 </html> 
