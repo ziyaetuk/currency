@@ -41,13 +41,13 @@ const getAllCurrencies = (c) => {
 }
 
 
-  // Form variables
+  
   document.getElementById('convertBotten').addEventListener("click", (e) => {
     e.preventDefault();
-    let amount = document.getElementById('Amount');
-    let from = document.getElementById('from');
-    let to = document.getElementById('to');
-    let convResult = document.getElementById('convResult');
+    let amount = document.getElementById('convertAmount');
+    let from = document.getElementById('fromCurrency');
+    let to = document.getElementById('toCurrency');
+    let convResult = document.getElementById('currencyResult');
     let convertFrom = from.options[from.selectedIndex].value;
     let convertTo = to.options[to.selectedIndex].value;
     let enteredAmount = amount.value;

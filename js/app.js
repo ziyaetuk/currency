@@ -12,70 +12,46 @@ SERVICE WORKER
 
 //Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
 if (navigator.serviceWorker.controller) {
-  console.log('[PWA Builder] active service worker found, no need to register')
+  console.log('[SW Builder] ....')
 } else {
 
 //Register the ServiceWorker
-  navigator.serviceWorker.register('pwa-sw.js', {
+  navigator.serviceWorker.register('sw.js', {
     scope: './'
   }).then(function(reg) {
     console.log('Service worker has been registered for scope:'+ reg.scope);
   });
 }
 
-/*
-CACHE API
-*/
-// fetch all currencies 
-const fetchAllCurrencies = (e) => {
-	// used es6 Arrow func here..
-	$.get('https://free.currencyconverterapi.com/api/v5/currencies', (data) => {
-		// if data not fetch
-		if(!data) console.log("Could not fetch any data");
-		
-		// convert pairs to array
-		const pairs = objectToArray(data.results);
 
-		// used for of loop
-		for(let val of pairs){
-			// using template leteral
-			$("#convert-from").append(`
-				<option value="${val.id}">${val.id} (${val.currencyName})</option>
-			`);
-			$("#convert-to").append(`
-				<option value="${val.id}">${val.id} (${val.currencyName})</option>
-			`);
-		}
-	});
-}
 
 // convert currencies 
 function convertCurrency(){
-	let from 	= $("#convert-from").val();
-	let to 		= $("#convert-to").val();
-	let amount	= $("#convert-amount").val();
+	let from 	= $("#fromCurrency").val();
+	let to 		= $("#toCurrency").val();
+	let amount	= $("#convertAmount").val();
 
-	// restrict user for converting same currency
+	// Same Currency Restriction
 	if(from == to){
 		// console.log('error ');
 		$(".error_msg").html(`
 			<div class="card-feel">
 				<span class="text-danger">
-					Process Error!, You cannot convert thesame currency.
+					Error: Same currency.
 				</span>
 			</div>
 		`);
 
-		// hide error message
+		//  Clear Error Message
 		setTimeout((e) => {
 			$(".error_msg").html("");
 		}, 1000 * 3);
 
-		// stop proccess
+		
 		return false;
 	}
 
-	// build query 
+	
 	let body  = `${from}_${to}`;
 	let query = {
 		q: body
@@ -86,7 +62,7 @@ function convertCurrency(){
 		// convert to array
 		const pairs = objectToArray(data.results);
 
-		// iterate pairs
+		
 		$.each(pairs, function(index, val) {
 			$(".results").append(`
 				<div class="card-feel">
@@ -97,7 +73,7 @@ function convertCurrency(){
 				</div>
 			`);
 
-			// save object results for later use
+			
 			let object = {
 				symbol: body,
 				value: val.val
@@ -131,10 +107,10 @@ function refreshPage() {
 
 
 /*
-INDEXED DB
+ DB
 */
 if (!window.indexedDB) {
-    console.log("Your browser doesn't support a stable version of IndexedDB");
+    console.log("Error: Browser Support Issue");
 }
 
 // open database 
@@ -224,12 +200,12 @@ function fetchFromDatabase(symbol, amount) {
 					$(".error_msg").html("");
 				}, 1000 * 3);
 
-				// void
+			
 				return;
 	  		}
 
-			// console.log(data);
-			// console.log(data);
+	
+			
 			let pairs = symbol.split('_');
 			let fr = pairs[0];
 			let to = pairs[1];
